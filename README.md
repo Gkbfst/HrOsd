@@ -1,16 +1,4 @@
-# HrOsd
-一个基于HWinfo的硬件监控覆盖层
-[README.md](https://github.com/user-attachments/files/33849293/README.md)
 # HrOsd — 不注入游戏的性能覆盖层
-
-## 为什么做这个
-
-RTSS 通过 inline hook 改写 `dxgi.dll` 的机器码来统计帧率，依赖一张硬编码的函数偏移表。
-Windows 每次功能更新重新编译 `dxgi.dll`，偏移表作废，`jmp` 就会写进错误位置——
-游戏一启动就在 `dxgi.dll` 里 `0xC0000005` 崩掉，没有任何报错提示。
-
-本程序全部走公开接口（NVML / ETW / WMI / Win32），一个字节都不碰游戏的代码。
-代价是独占全屏下覆盖层不可见、数据有几十毫秒延迟；换来的是不会因为系统更新而崩。
 
 **Version 1.0.0**　（Windows 10/11 x64 · .NET 8 Desktop Runtime · NVIDIA 显卡）
 
@@ -164,4 +152,11 @@ RTSS 通过 inline hook 改写 `dxgi.dll` 的机器码来统计帧率，它依�
 - [HWiNFO](https://www.hwinfo.com/) — 共享内存传感器数据
 - NVML / NVIDIA 驱动 — 显卡实时数据
 
+## 为什么做这个
 
+RTSS 通过 inline hook 改写 `dxgi.dll` 的机器码来统计帧率，依赖一张硬编码的函数偏移表。
+Windows 每次功能更新重新编译 `dxgi.dll`，偏移表作废，`jmp` 就会写进错误位置——
+游戏一启动就在 `dxgi.dll` 里 `0xC0000005` 崩掉，没有任何报错提示。
+
+本程序全部走公开接口（NVML / ETW / WMI / Win32），一个字节都不碰游戏的代码。
+代价是独占全屏下覆盖层不可见、数据有几十毫秒延迟；换来的是不会因为系统更新而崩。
