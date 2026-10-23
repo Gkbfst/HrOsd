@@ -1,0 +1,20 @@
+# ---------- 构建输出 ----------
+bin/
+obj/
+publish/
+publish-multi/
+
+# ---------- Visual Studio / Rider ----------
+.vs/
+.idea/
+*.user
+*.suo
+*.userprefs
+
+# ---------- 第三方二进制（请自行下载，不随仓库分发）----------
+presentmon.exe
+PresentMon*.exe
+
+# ---------- 本地运行产物 ----------
+*.log
+config.json
